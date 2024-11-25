@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
-import { X } from 'lucide-react';
-import { Metadata } from 'next';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import { X } from "lucide-react";
+import { Metadata } from "next";
 
 type Category =
-  | 'all'
-  | 'education'
-  | 'healthcare'
-  | 'environment'
-  | 'community'
-  | 'women'
-  | 'youth';
+  | "all"
+  | "education"
+  | "healthcare"
+  | "environment"
+  | "community"
+  | "women"
+  | "youth";
 
 interface GalleryImage {
   src: string;
@@ -24,60 +24,60 @@ interface GalleryImage {
 
 const images: GalleryImage[] = [
   {
-    src: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6',
-    title: 'Education Program',
-    category: 'education',
+    src: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6",
+    title: "Education Program",
+    category: "education",
     description:
       "Supporting underprivileged children's education in Tamil Nadu",
   },
   {
-    src: 'https://images.unsplash.com/photo-1584515933487-779824d29309',
-    title: 'Healthcare Initiative',
-    category: 'healthcare',
-    description: 'Free medical camps in rural areas',
+    src: "https://images.unsplash.com/photo-1584515933487-779824d29309",
+    title: "Healthcare Initiative",
+    category: "healthcare",
+    description: "Free medical camps in rural areas",
   },
   {
-    src: 'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6',
-    title: 'Environmental Projects',
-    category: 'environment',
-    description: 'Tree planting and conservation efforts',
+    src: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6",
+    title: "Environmental Projects",
+    category: "environment",
+    description: "Tree planting and conservation efforts",
   },
   {
-    src: 'https://images.unsplash.com/photo-1509099836639-18ba1795216d',
-    title: 'Women Empowerment',
-    category: 'women',
-    description: 'Supporting women through skill development',
+    src: "https://images.unsplash.com/photo-1509099836639-18ba1795216d",
+    title: "Women Empowerment",
+    category: "women",
+    description: "Supporting women through skill development",
   },
   {
-    src: 'https://images.unsplash.com/photo-1518398046578-8cca57782e17',
-    title: 'Youth Development',
-    category: 'youth',
-    description: 'Empowering the next generation',
+    src: "https://images.unsplash.com/photo-1518398046578-8cca57782e17",
+    title: "Youth Development",
+    category: "youth",
+    description: "Empowering the next generation",
   },
   {
-    src: 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b',
-    title: 'Community Service',
-    category: 'community',
-    description: 'Building stronger communities together',
+    src: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b",
+    title: "Community Service",
+    category: "community",
+    description: "Building stronger communities together",
   },
 ];
 
 const categories = [
-  { id: 'all', label: 'All' },
-  { id: 'education', label: 'Education' },
-  { id: 'healthcare', label: 'Healthcare' },
-  { id: 'environment', label: 'Environment' },
-  { id: 'community', label: 'Community' },
-  { id: 'women', label: 'Women Empowerment' },
-  { id: 'youth', label: 'Youth Programs' },
+  { id: "all", label: "All" },
+  { id: "education", label: "Education" },
+  { id: "healthcare", label: "Healthcare" },
+  { id: "environment", label: "Environment" },
+  { id: "community", label: "Community" },
+  { id: "women", label: "Women Empowerment" },
+  { id: "youth", label: "Youth Programs" },
 ];
 
 export default function GalleryPage() {
-  const [selectedCategory, setSelectedCategory] = useState<Category>('all');
+  const [selectedCategory, setSelectedCategory] = useState<Category>("all");
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
   const filteredImages =
-    selectedCategory === 'all'
+    selectedCategory === "all"
       ? images
       : images.filter((img) => img.category === selectedCategory);
 
@@ -103,10 +103,10 @@ export default function GalleryPage() {
             <button
               key={category.id}
               onClick={() => setSelectedCategory(category.id as Category)}
-              className={`px-6 py-2 rounded-full transition-colors ${
+              className={`px-6 py-2 rounded-full  ${
                 selectedCategory === category.id
-                  ? 'bg-primary text-white'
-                  : 'bg-white hover:bg-secondary/20'
+                  ? "bg-primary text-white"
+                  : "bg-white hover:bg-secondary/20"
               }`}
             >
               {category.label}
@@ -138,7 +138,7 @@ export default function GalleryPage() {
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-110"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    loading={index < 6 ? 'eager' : 'lazy'}
+                    loading={index < 6 ? "eager" : "lazy"}
                   />
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute bottom-0 left-0 right-0 p-6 text-white">

@@ -21,34 +21,22 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2">
               <li>
-                <Link
-                  href="/about"
-                  className="hover:text-white transition-colors"
-                >
+                <Link href="/about" className="hover:text-white ">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/causes"
-                  className="hover:text-white transition-colors"
-                >
+                <Link href="/causes" className="hover:text-white ">
                   Our Causes
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/gallery"
-                  className="hover:text-white transition-colors"
-                >
+                <Link href="/gallery" className="hover:text-white ">
                   Gallery
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/contact"
-                  className="hover:text-white transition-colors"
-                >
+                <Link href="/contact" className="hover:text-white ">
                   Contact
                 </Link>
               </li>
@@ -68,32 +56,16 @@ export default function Footer() {
           <div>
             <h4 className="text-white text-lg font-semibold mb-4">Follow Us</h4>
             <div className="flex space-x-4">
-              <a
-                href="#"
-                className="hover:text-white transition-colors"
-                aria-label="Facebook"
-              >
+              <a href="#" className="hover:text-white " aria-label="Facebook">
                 <Facebook className="w-6 h-6" />
               </a>
-              <a
-                href="#"
-                className="hover:text-white transition-colors"
-                aria-label="Twitter"
-              >
+              <a href="#" className="hover:text-white " aria-label="Twitter">
                 <Twitter className="w-6 h-6" />
               </a>
-              <a
-                href="#"
-                className="hover:text-white transition-colors"
-                aria-label="Instagram"
-              >
+              <a href="#" className="hover:text-white " aria-label="Instagram">
                 <Instagram className="w-6 h-6" />
               </a>
-              <a
-                href="#"
-                className="hover:text-white transition-colors"
-                aria-label="YouTube"
-              >
+              <a href="#" className="hover:text-white " aria-label="YouTube">
                 <Youtube className="w-6 h-6" />
               </a>
             </div>

@@ -24,7 +24,7 @@ export default function LanguageSelector() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="flex items-center gap-2 text-gray-700 dark:text-gray-200 hover:text-primary transition-colors">
+      <DropdownMenuTrigger className="flex items-center gap-2 text-gray-700 dark:text-gray-200 hover:text-primary ">
         <Globe className="h-5 w-5" />
         <span className="hidden md:inline">Language</span>
       </DropdownMenuTrigger>

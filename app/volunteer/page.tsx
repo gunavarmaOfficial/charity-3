@@ -213,7 +213,7 @@ export default function VolunteerPage() {
 
               <button
                 type="submit"
-                className="w-full bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
+                className="w-full bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 "
               >
                 Submit Application
               </button>

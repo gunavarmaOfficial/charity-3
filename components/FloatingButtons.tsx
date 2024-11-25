@@ -18,7 +18,7 @@ export default function FloatingButtons() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={handleWhatsAppClick}
-        className="bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-colors"
+        className="bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 "
       >
         <MessageCircle className="h-6 w-6" />
       </motion.button>
@@ -26,7 +26,7 @@ export default function FloatingButtons() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={handleCallClick}
-        className="bg-primary text-white p-4 rounded-full shadow-lg hover:bg-primary/90 transition-colors"
+        className="bg-primary text-white p-4 rounded-full shadow-lg hover:bg-primary/90 "
       >
         <Phone className="h-6 w-6" />
       </motion.button>

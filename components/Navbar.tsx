@@ -47,7 +47,7 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "transition-colors text-white",
+                  " text-white",
                   scrolled ? "text-white " : "text-gray-400"
                 )}
               >
@@ -59,7 +59,7 @@ export default function Navbar() {
                 scrolled
                   ? "text-primary bg-white shadow-2xl  hover:bg-white/90"
                   : " bg-primary text-white hover:bg-primary/90",
-                "  px-6 py-2 rounded-full transition-colors  "
+                "  px-6 py-2 rounded-full   "
               )}
             >
               Donate Now
@@ -96,13 +96,13 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="block   hover:text-primary transition-colors py-2"
+                className="block   hover:text-primary  py-2"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
-            <button className="w-full bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition-colors">
+            <button className="w-full bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 ">
               Donate Now
             </button>
           </div>
