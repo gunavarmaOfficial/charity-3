@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 import PageTransition from "@/components/PageTransition";
 import FloatingButtons from "@/components/FloatingButtons";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={outfit.className}>
+        <SpeedInsights />
         <FloatingButtons />
         <LoadingScreen />
         <div className="flex min-h-screen flex-col">
