@@ -115,7 +115,9 @@ export default function ContactPage() {
             transition={{ duration: 0.8 }}
           >
             <div className="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-lg">
-              <h2 className="text-2xl font-semibold mb-6">Contact Information</h2>
+              <h2 className="text-2xl font-semibold mb-6">
+                Contact Information
+              </h2>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <MapPin className="w-6 h-6 text-primary mt-1" />

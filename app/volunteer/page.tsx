@@ -93,11 +93,11 @@ export default function VolunteerPage() {
                     {...register("name")}
                     className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary"
                   />
-                  {errors.name && (
+                  {/* {errors.name && (
                     <p className="text-red-500 text-sm mt-1">
                       {errors.name.message}
                     </p>
-                  )}
+                  )} */}
                 </div>
 
                 <div>
@@ -109,11 +109,11 @@ export default function VolunteerPage() {
                     {...register("email")}
                     className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary"
                   />
-                  {errors.email && (
+                  {/* {errors.email && (
                     <p className="text-red-500 text-sm mt-1">
                       {errors.email.message}
                     </p>
-                  )}
+                  )} */}
                 </div>
               </div>
 
@@ -126,11 +126,11 @@ export default function VolunteerPage() {
                   {...register("phone")}
                   className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary"
                 />
-                {errors.phone && (
+                {/* {errors.phone && (
                   <p className="text-red-500 text-sm mt-1">
                     {errors.phone.message}
                   </p>
-                )}
+                )} */}
               </div>
 
               <div>
@@ -153,11 +153,11 @@ export default function VolunteerPage() {
                     </label>
                   ))}
                 </div>
-                {errors.interests && (
+                {/* {errors.interests && (
                   <p className="text-red-500 text-sm mt-1">
                     {errors.interests.message}
                   </p>
-                )}
+                )} */}
               </div>
 
               <div>
@@ -175,11 +175,11 @@ export default function VolunteerPage() {
                     </option>
                   ))}
                 </select>
-                {errors.availability && (
+                {/* {errors.availability && (
                   <p className="text-red-500 text-sm mt-1">
                     {errors.availability.message}
                   </p>
-                )}
+                )} */}
               </div>
 
               <div>
@@ -204,11 +204,11 @@ export default function VolunteerPage() {
                   className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary"
                   placeholder="Tell us why you'd like to volunteer with us"
                 />
-                {errors.message && (
+                {/* {errors.message && (
                   <p className="text-red-500 text-sm mt-1">
                     {errors.message.message}
                   </p>
-                )}
+                )} */}
               </div>
 
               <button

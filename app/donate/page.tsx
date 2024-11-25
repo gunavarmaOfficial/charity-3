@@ -6,16 +6,6 @@ import { Heart, Users, Target } from "lucide-react";
 import DonationForm from "@/components/DonationForm";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: 'Donate - Sri Viswa Charitable Trust',
-  description: 'Support our mission to empower communities through education, healthcare, and sustainable development.',
-  openGraph: {
-    title: 'Donate - Sri Viswa Charitable Trust',
-    description: 'Make a difference by supporting our charitable initiatives',
-    images: ['https://images.unsplash.com/photo-1488521787991-ed7bbaae773c'],
-  },
-};
-
 const impactStats = [
   {
     icon: Heart,
