@@ -8,7 +8,8 @@ const timeline = [
   {
     year: "1995",
     title: "Foundation Established",
-    description: "Started with a small team of dedicated volunteers in Chennai.",
+    description:
+      "Started with a small team of dedicated volunteers in Chennai.",
   },
   {
     year: "2000",
@@ -23,7 +24,8 @@ const timeline = [
   {
     year: "2010",
     title: "Environmental Initiative",
-    description: "Started large-scale tree plantation and conservation projects.",
+    description:
+      "Started large-scale tree plantation and conservation projects.",
   },
   {
     year: "2015",
@@ -68,7 +70,7 @@ const awards = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-gray-50 ">
       {/* Hero Section */}
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <Image
@@ -102,23 +104,24 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
-              <div className="space-y-4 text-gray-600 dark:text-gray-400">
+              <div className="space-y-4 text-gray-600 ">
                 <p>
                   Founded in 1995, Hope Foundation has been at the forefront of
-                  social change in Tamil Nadu. Our mission is to create sustainable
-                  solutions for communities in need through education, healthcare,
-                  and empowerment initiatives.
+                  social change in Tamil Nadu. Our mission is to create
+                  sustainable solutions for communities in need through
+                  education, healthcare, and empowerment initiatives.
                 </p>
                 <p>
                   We believe in the power of collective action and work closely
                   with communities to understand their needs and implement
                   effective solutions. Our approach combines grassroots
-                  understanding with modern methodologies to create lasting impact.
+                  understanding with modern methodologies to create lasting
+                  impact.
                 </p>
                 <p>
-                  Through our various programs, we have touched the lives of over
-                  100,000 individuals across Tamil Nadu, creating positive change
-                  that spans generations.
+                  Through our various programs, we have touched the lives of
+                  over 100,000 individuals across Tamil Nadu, creating positive
+                  change that spans generations.
                 </p>
               </div>
             </motion.div>
@@ -140,7 +143,7 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline Section */}
-      <section className="py-20 bg-white dark:bg-gray-800">
+      <section className="py-20 bg-white ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -149,7 +152,7 @@ export default function AboutPage() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold mb-4">Our Journey</h2>
-            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto">
               A timeline of our major milestones and achievements
             </p>
           </motion.div>
@@ -177,9 +180,7 @@ export default function AboutPage() {
                         {item.year}
                       </h3>
                       <h4 className="font-semibold mb-2">{item.title}</h4>
-                      <p className="text-gray-600 dark:text-gray-400">
-                        {item.description}
-                      </p>
+                      <p className="text-gray-600 ">{item.description}</p>
                     </div>
                   </div>
                   <div className="relative flex items-center justify-center w-8 h-8">
@@ -203,7 +204,7 @@ export default function AboutPage() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold mb-4">Our Leadership</h2>
-            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-gray-600  max-w-2xl mx-auto">
               Meet the dedicated team behind our mission
             </p>
           </motion.div>
@@ -215,7 +216,7 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg"
+                className="bg-white  rounded-lg overflow-hidden shadow-lg"
               >
                 <div className="relative h-64">
                   <Image
@@ -228,9 +229,7 @@ export default function AboutPage() {
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
                   <p className="text-primary mb-4">{member.role}</p>
-                  <p className="text-gray-600 dark:text-gray-400">
-                    {member.bio}
-                  </p>
+                  <p className="text-gray-600 ">{member.bio}</p>
                 </div>
               </motion.div>
             ))}

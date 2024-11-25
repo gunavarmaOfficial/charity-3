@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 :root {
   --background: 0 0% 100%;
   --foreground: 240 10% 3.9%;
@@ -67,7 +67,12 @@ body {
 .image-loading::after {
   content: "";
   @apply absolute inset-0 -translate-x-full;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
   animation: loading 1.5s infinite;
 }
 
@@ -79,4 +84,30 @@ body {
 
 html {
   @apply scroll-smooth;
+}
+
+body {
+  --sb-track-color: #ffffff;
+  --sb-thumb-color: #4b9629;
+  --sb-size: 4px;
+}
+
+body::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 50px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 50px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
 }

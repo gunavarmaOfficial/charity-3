@@ -6,7 +6,14 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Heart, Users, Globe, Target, CheckCircle2 } from "lucide-react";
+import {
+  ArrowRight,
+  Heart,
+  Users,
+  Globe,
+  Target,
+  CheckCircle2,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -99,7 +106,8 @@ export default function Home() {
             Together We Can Make a Difference
           </h1>
           <p className="text-xl mb-8">
-            Join us in our mission to create positive change and transform lives across India
+            Join us in our mission to create positive change and transform lives
+            across India
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
@@ -122,24 +130,25 @@ export default function Home() {
       </section>
 
       {/* Impact Stats Section */}
-      <section className="stats-section py-20 bg-gray-50 dark:bg-gray-900">
+      <section className="stats-section py-20 bg-gray-50 ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Our Impact</h2>
-            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Through the support of our donors and volunteers, we have made significant
-              progress in creating positive change across communities.
+            <p className="text-gray-600  max-w-2xl mx-auto">
+              Through the support of our donors and volunteers, we have made
+              significant progress in creating positive change across
+              communities.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {impactStats.map((stat, index) => (
               <div
                 key={index}
-                className="impact-stat text-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg"
+                className="impact-stat text-center p-6 bg-white  rounded-lg shadow-lg"
               >
                 <stat.icon className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h3 className="text-4xl font-bold mb-2">{stat.value}</h3>
-                <p className="text-gray-600 dark:text-gray-400">{stat.label}</p>
+                <p className="text-gray-600 ">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -151,7 +160,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Upcoming Events</h2>
-            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-gray-600  max-w-2xl mx-auto">
               Join us in our upcoming events and be part of the change.
             </p>
           </div>
@@ -162,7 +171,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg"
+                className="bg-white  rounded-lg overflow-hidden shadow-lg"
               >
                 <div className="relative h-48">
                   <Image
@@ -174,7 +183,7 @@ export default function Home() {
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">{event.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4">
+                  <p className="text-gray-600  mb-4">
                     <span className="block">📅 {event.date}</span>
                     <span className="block">📍 {event.location}</span>
                   </p>
@@ -196,8 +205,8 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Our Achievements</h2>
             <p className="max-w-2xl mx-auto opacity-90">
-              Together with our supporters, we have achieved significant milestones
-              in our journey to create positive change.
+              Together with our supporters, we have achieved significant
+              milestones in our journey to create positive change.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

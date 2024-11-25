@@ -18,7 +18,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-20">
+    <div className="min-h-screen bg-gray-50  py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -27,7 +27,7 @@ export default function ContactPage() {
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-gray-600  max-w-2xl mx-auto">
             Get in touch with us for any inquiries or support.
           </p>
         </motion.div>
@@ -38,7 +38,7 @@ export default function ContactPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-lg">
+            <div className="bg-white  rounded-lg p-8 shadow-lg">
               <h2 className="text-2xl font-semibold mb-6">Send us a message</h2>
               <form onSubmit={handleSubmit}>
                 <div className="space-y-6">
@@ -114,7 +114,7 @@ export default function ContactPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-lg">
+            <div className="bg-white  rounded-lg p-8 shadow-lg">
               <h2 className="text-2xl font-semibold mb-6">
                 Contact Information
               </h2>
@@ -123,7 +123,7 @@ export default function ContactPage() {
                   <MapPin className="w-6 h-6 text-primary mt-1" />
                   <div>
                     <h3 className="font-medium">Address</h3>
-                    <p className="text-gray-600 dark:text-gray-400">
+                    <p className="text-gray-600 ">
                       123 Charity Lane, Chennai, Tamil Nadu 600001
                     </p>
                   </div>
@@ -132,18 +132,14 @@ export default function ContactPage() {
                   <Phone className="w-6 h-6 text-primary mt-1" />
                   <div>
                     <h3 className="font-medium">Phone</h3>
-                    <p className="text-gray-600 dark:text-gray-400">
-                      +91 98765 43210
-                    </p>
+                    <p className="text-gray-600 ">+91 98765 43210</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <Mail className="w-6 h-6 text-primary mt-1" />
                   <div>
                     <h3 className="font-medium">Email</h3>
-                    <p className="text-gray-600 dark:text-gray-400">
-                      info@hopefoundation.org
-                    </p>
+                    <p className="text-gray-600 ">info@hopefoundation.org</p>
                   </div>
                 </div>
               </div>
