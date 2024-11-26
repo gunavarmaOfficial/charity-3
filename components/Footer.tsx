@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <h3 className="text-white text-lg font-semibold mb-4">
-              Hope Foundation
+              Sri Viswa Charitable Trust
             </h3>
             <p className="text-sm">
               Making a difference in the world through compassion, dedication,
@@ -47,10 +47,10 @@ export default function Footer() {
               Contact Us
             </h4>
             <ul className="space-y-2 text-sm">
-              <li>123 Charity Lane</li>
-              <li>New York, NY 10001</li>
-              <li>Phone: (555) 123-4567</li>
-              <li>Email: info@hopefoundation.org</li>
+              <li>No. 128, Mani Nagar 2nd Street,</li>
+              <li>Sivanandhapuram, Saravanampatti,</li>
+              <li>Phone: +91 99445 34098</li>
+              <li>Email: null</li>
             </ul>
           </div>
           <div>
@@ -72,7 +72,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-gray-800 mt-8 pt-8 text-sm text-center">
-          <p>© 2024 Hope Foundation. All rights reserved.</p>
+          <p>© 2024 Sri Viswa Charitable Trust. All rights reserved.</p>
         </div>
       </div>
     </footer>

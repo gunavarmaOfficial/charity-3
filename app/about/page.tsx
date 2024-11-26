@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Heart, Users, Globe, Target, Award, Calendar } from "lucide-react";
+import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
 
 const timeline = [
   {
@@ -68,6 +69,73 @@ const awards = [
   "Women Empowerment Recognition (2016)",
 ];
 
+const content = [
+  {
+    title: "Who We Are:",
+    description:
+      "Sri Viswa Charitable Trust is a registered Public Charitable Trust established in Coimbatore, Tamil Nadu. Founded by Mr. G. Sampath Kumar, the Trust focuses on addressing pressing social issues such as illiteracy, poverty, healthcare accessibility, and environmental sustainability",
+    content: (
+      <div className="h-full w-full  flex items-center justify-center text-white">
+        <Image
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7uEkL6ZJD_xYuluCNfS5U5GzUDgGOmr7qkw&s"
+          width={300}
+          height={300}
+          className="h-full w-full object-cover"
+          alt="linear board demo"
+        />
+      </div>
+    ),
+  },
+  {
+    title: "Our Journey:",
+    description:
+      "From our humble beginnings with a vision to help a handful of families, we have grown into an organization that touches lives across multiple domains. With dedicated trustees and volunteers, we continue to expand our reach and deepen our impact.",
+    content: (
+      <div className="h-full w-full  flex items-center justify-center text-white">
+        <Image
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq9_eH7U1B8k5Q_rDvinMxgcgJGqKczbd24Q&s"
+          width={300}
+          height={300}
+          className="h-full w-full object-cover"
+          alt="linear board demo"
+        />
+      </div>
+    ),
+  },
+  {
+    title: "Vision Statement:",
+    description:
+      "To create an equitable society where every individual has access to education, healthcare, and opportunities to thrive",
+    content: (
+      <div className="h-full w-full  flex items-center justify-center text-white">
+        <Image
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnkMl3YSlakydGuqPZVT-9q-6Yl-ls2lGu6A&s"
+          width={300}
+          height={300}
+          className="h-full w-full object-cover"
+          alt="linear board demo"
+        />
+      </div>
+    ),
+  },
+  {
+    title: "Mission Statement:",
+    description:
+      "To empower communities, enhance livelihoods, and build a sustainable future through impactful and inclusive initiatives.",
+    content: (
+      <div className="h-full w-full  flex items-center justify-center text-white">
+        <Image
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQA0jsjx9b0aVtkUKzp9CNpcPIXMWKzKOW1gg&s"
+          width={300}
+          height={300}
+          className="h-full w-full object-cover"
+          alt="linear board demo"
+        />
+      </div>
+    ),
+  },
+];
+
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-gray-50 ">
@@ -94,6 +162,8 @@ export default function AboutPage() {
         </motion.div>
       </section>
 
+      <StickyScroll content={content} />
+
       {/* Mission Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -103,25 +173,28 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
+              <h2 className="text-3xl font-bold mb-6">Our Initiatives</h2>
               <div className="space-y-4 text-gray-600 ">
                 <p>
-                  Founded in 1995, Hope Foundation has been at the forefront of
-                  social change in Tamil Nadu. Our mission is to create
-                  sustainable solutions for communities in need through
-                  education, healthcare, and empowerment initiatives.
+                  Education: Education is the cornerstone of our society. Our
+                  programs include: Establishing schools and colleges to provide
+                  quality education. Offering scholarships to students from
+                  low-income families. Running literacy programs and providing
+                  digital learning resources in rural areas.
                 </p>
                 <p>
-                  We believe in the power of collective action and work closely
-                  with communities to understand their needs and implement
-                  effective solutions. Our approach combines grassroots
-                  understanding with modern methodologies to create lasting
-                  impact.
+                  Healthcare: We aim to bridge the healthcare gap through:
+                  Organizing free health camps for eye care, maternal health,
+                  and general wellness. Setting up dispensaries that offer free
+                  medicines and treatment. Promoting health awareness on
+                  critical issues like malnutrition and HIV/AIDS.
                 </p>
                 <p>
-                  Through our various programs, we have touched the lives of
-                  over 100,000 individuals across Tamil Nadu, creating positive
-                  change that spans generations.
+                  Tribal and Rural Development: Focusing on marginalized
+                  communities, we: Provide vocational training to enhance
+                  employability. Develop rural infrastructure, including solar
+                  street lights and sanitation facilities. Support tribal
+                  artisans by marketing their traditional crafts
                 </p>
               </div>
             </motion.div>

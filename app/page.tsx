@@ -15,6 +15,9 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ImagesSlider } from "@/components/ui/images-slider";
+import HeroVideoDialog from "@/components/ui/hero-video-dialog";
+import TextReveal from "@/components/ui/text-reveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -44,6 +47,15 @@ const upcomingEvents = [
     location: "Coimbatore",
     image: "https://images.unsplash.com/photo-1584515933487-779824d29309",
   },
+];
+
+const images = [
+  "https://s3.ap-south-1.amazonaws.com/rzp-prod-merchant-assets/payment-link/description/20190122164349_838A3181_D5P3M1bwCyu0x7.jpg",
+  "https://donate.oxfamindia.org/donatetoeducate/ravi/davos-healthcare/images/how-donation.jpg",
+  "https://www.globalgiving.org/pfil/1877/ph_1877_99953.jpg",
+  "https://images.unsplash.com/photo-1710093072215-65070f9cf93e?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://media.istockphoto.com/id/941788480/photo/portrait-of-girl-kid-having-mid-day-meal-in-indian-school.webp?a=1&b=1&s=612x612&w=0&k=20&c=VQH6wklsVx9UlbFHNbzG7fYESlfdQwN-kYlqmQWzCyY=",
 ];
 
 const achievements = [
@@ -87,20 +99,21 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c"
-          alt="Hero background"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/50" />
+
+      <ImagesSlider className="h-[100vh]" images={images}>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="relative text-center text-white px-4 max-w-4xl"
+          initial={{
+            opacity: 0,
+            y: -80,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 0.6,
+          }}
+          className="z-50 flex flex-col text-center text-white px-4 max-w-4xl justify-center items-center"
         >
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
             Together We Can Make a Difference
@@ -127,7 +140,30 @@ export default function Home() {
             </Button>
           </div>
         </motion.div>
-      </section>
+      </ImagesSlider>
+
+      <div className="z-10 flex flex-col min-h-64 items-center justify-center rounded-lg border bg-white ">
+        <TextReveal
+          text=" Welcome to Sri Viswa Charitable Trust, a beacon of hope for
+          underprivileged communities in India. "
+        />
+        <TextReveal
+          text=" Since our inception in 2024, we have dedicated ourselves to uplifting
+        the vulnerable through education, healthcare, environmental
+        conservation, and social empowerment.Guided by our mission to create a better tomorrow, we serve individuals
+        irrespective of caste, creed, religion, or gender."
+        />
+      </div>
+
+      <div className=" flex items-center justify-center  lg:py-20 w-full lg:p-[20%]">
+        <HeroVideoDialog
+          className="dark:hidden block"
+          animationStyle="from-center"
+          videoSrc="https://www.youtube.com/watch?v=Tuw8hxrFBH8&t=27s"
+          thumbnailSrc="https://startup-template-sage.vercel.app/hero-light.png"
+          thumbnailAlt="Hero Video"
+        />
+      </div>
 
       {/* Impact Stats Section */}
       <section className="stats-section py-20 bg-gray-50 ">

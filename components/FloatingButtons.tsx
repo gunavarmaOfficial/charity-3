@@ -5,11 +5,11 @@ import { motion } from "framer-motion";
 
 export default function FloatingButtons() {
   const handleWhatsAppClick = () => {
-    window.open("https://wa.me/1234567890", "_blank");
+    window.open("https://wa.me/+919944534098", "_blank");
   };
 
   const handleCallClick = () => {
-    window.location.href = "tel:1234567890";
+    window.location.href = "tel:+91 99445 34098";
   };
 
   return (

@@ -124,7 +124,8 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-medium">Address</h3>
                     <p className="text-gray-600 ">
-                      123 Charity Lane, Chennai, Tamil Nadu 600001
+                      No. 128, Mani Nagar 2nd Street, Sivanandhapuram,
+                      Saravanampatti,
                     </p>
                   </div>
                 </div>
@@ -132,14 +133,14 @@ export default function ContactPage() {
                   <Phone className="w-6 h-6 text-primary mt-1" />
                   <div>
                     <h3 className="font-medium">Phone</h3>
-                    <p className="text-gray-600 ">+91 98765 43210</p>
+                    <p className="text-gray-600 ">+91 99445 34098</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <Mail className="w-6 h-6 text-primary mt-1" />
                   <div>
                     <h3 className="font-medium">Email</h3>
-                    <p className="text-gray-600 ">info@hopefoundation.org</p>
+                    <p className="text-gray-600 ">null</p>
                   </div>
                 </div>
               </div>
