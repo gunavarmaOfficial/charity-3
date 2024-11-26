@@ -17,7 +17,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { ImagesSlider } from "@/components/ui/images-slider";
 import HeroVideoDialog from "@/components/ui/hero-video-dialog";
-import TextReveal from "@/components/ui/text-reveal";
+import TextReveal, { TextRevealByWord } from "@/components/ui/text-reveal";
+import AnimatedBackground from "@/components/ui/AnimatedBackground";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -142,26 +143,14 @@ export default function Home() {
         </motion.div>
       </ImagesSlider>
 
-      <div className="z-10 flex flex-col min-h-64 items-center justify-center rounded-lg border bg-white ">
-        <TextReveal
-          text=" Welcome to Sri Viswa Charitable Trust, a beacon of hope for
-          underprivileged communities in India. "
-        />
+      <AnimatedBackground />
+
+      <div className="z-10 flex flex-col min-h-64 items-center justify-center rounded-lg border  ">
         <TextReveal
           text=" Since our inception in 2024, we have dedicated ourselves to uplifting
         the vulnerable through education, healthcare, environmental
         conservation, and social empowerment.Guided by our mission to create a better tomorrow, we serve individuals
         irrespective of caste, creed, religion, or gender."
-        />
-      </div>
-
-      <div className=" flex items-center justify-center  lg:py-20 w-full lg:p-[20%]">
-        <HeroVideoDialog
-          className="dark:hidden block"
-          animationStyle="from-center"
-          videoSrc="https://www.youtube.com/watch?v=Tuw8hxrFBH8&t=27s"
-          thumbnailSrc="https://startup-template-sage.vercel.app/hero-light.png"
-          thumbnailAlt="Hero Video"
         />
       </div>
 
