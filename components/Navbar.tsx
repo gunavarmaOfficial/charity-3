@@ -31,7 +31,9 @@ export default function Navbar() {
     <nav
       className={cn(
         "fixed w-full z-50 transition-all duration-300 ",
-        scrolled ? "bg-primary shadow-2xl py-4" : "bg-transparent py-6"
+        scrolled || isOpen
+          ? "bg-primary shadow-2xl py-4"
+          : "bg-transparent py-6"
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -73,9 +75,9 @@ export default function Navbar() {
             aria-label="Toggle menu"
           >
             {isOpen ? (
-              <X className="h-6 w-6 " />
+              <X className="h-6 w-6 " color="#ffffff" />
             ) : (
-              <Menu className="h-6 w-6 " />
+              <Menu className="h-6 w-6 " color="#ffffff" />
             )}
           </button>
         </div>
@@ -89,9 +91,9 @@ export default function Navbar() {
             closed: { opacity: 0, height: 0 },
           }}
           transition={{ duration: 0.3 }}
-          className="md:hidden overflow-hidden"
+          className="md:hidden h-screen "
         >
-          <div className="pt-4 pb-3 space-y-3">
+          <div className="pt-4 pb-3 h-screen text-white space-y-3">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -102,7 +104,7 @@ export default function Navbar() {
                 {item.label}
               </Link>
             ))}
-            <button className="w-full bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 ">
+            <button className="w-full  bg-white text-primary px-6 py-2 rounded-full hover:bg-primary/90 ">
               Donate Now
             </button>
           </div>

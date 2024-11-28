@@ -20,7 +20,7 @@ const AnimatedBackground = () => {
   return (
     <div className="relative flex items-center justify-center w-full h-screen bg-gradient-to-l from-[#16A249] to-[#1f6d17]">
       {/* Text */}
-      <div className="absolute top-1/2 flex flex-col gap-10 justify-center items-center z-50 transform -translate-y-1/2">
+      <div className="absolute top-1/2 flex flex-col gap-10 justify-center items-center z-10 transform -translate-y-1/2">
         <span className="text-white text-center flex flex-col px-4 gap-2  ">
           <span className="text-4xl drop-shadow-lg md:text-5xl  font-bold ">
             Welcome to Sri Viswa Charitable Trust
@@ -31,7 +31,7 @@ const AnimatedBackground = () => {
         </span>
 
         <HeroVideoDialog
-          className="md:h-[40%] md:w-[40%] px-10  "
+          className="md:h-[40%] md:w-[40%] px-10 z-50  "
           animationStyle="from-center"
           videoSrc="https://www.youtube.com/watch?v=E4XKY-ISKdU"
           thumbnailSrc="https://startup-template-sage.vercel.app/hero-light.png"
