@@ -50,7 +50,9 @@ export default function Navbar() {
               "text-2xl font-bold ",
               scrolled
                 ? "text-white "
-                : pathname == "/" || pathname == "/about"
+                : pathname == "/" ||
+                  pathname == "/about" ||
+                  pathname == "/volunteer"
                 ? "text-white"
                 : "text-primary"
             )}
@@ -67,7 +69,9 @@ export default function Navbar() {
                 className={cn(
                   scrolled
                     ? "text-white "
-                    : pathname == "/" || pathname == "/about"
+                    : pathname == "/" ||
+                      pathname == "/about" ||
+                      pathname == "/volunteer"
                     ? "text-white"
                     : "text-gray-400 hover:text-primary"
                 )}
@@ -101,7 +105,9 @@ export default function Navbar() {
                   "h-6 w-6 ",
                   scrolled
                     ? "text-white"
-                    : pathname == "/" || pathname == "/about"
+                    : pathname == "/" ||
+                      pathname == "/about" ||
+                      pathname == "/volunteer"
                     ? "text-white"
                     : "text-gray-400"
                 )}
