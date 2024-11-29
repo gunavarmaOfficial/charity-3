@@ -2,6 +2,7 @@
 
 import { Phone, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function FloatingButtons() {
   const handleWhatsAppClick = () => {
@@ -20,7 +21,7 @@ export default function FloatingButtons() {
         onClick={handleWhatsAppClick}
         className="bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 "
       >
-        <MessageCircle className="h-6 w-6" />
+        <FaWhatsapp className="h-6 w-6" />
       </motion.button>
       <motion.button
         whileHover={{ scale: 1.1 }}

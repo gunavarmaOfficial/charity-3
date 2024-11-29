@@ -28,10 +28,8 @@ export default function RootLayout({
         <FloatingButtons />
         <div className="flex min-h-screen flex-col">
           <Navbar />
-          <PageTransition>
-            <main className="">{children}</main>
-          </PageTransition>
-          <Footer />
+          <main className="">{children}</main>
+            <Footer />
         </div>
       </body>
     </html>
