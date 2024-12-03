@@ -3,8 +3,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import LoadingScreen from "@/components/LoadingScreen";
-import PageTransition from "@/components/PageTransition";
+import { Toaster } from "react-hot-toast";
 import FloatingButtons from "@/components/FloatingButtons";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -24,12 +23,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={outfit.className}>
+        <Toaster />
         <SpeedInsights />
         <FloatingButtons />
         <div className="flex min-h-screen flex-col">
           <Navbar />
           <main className="">{children}</main>
-            <Footer />
+          <Footer />
         </div>
       </body>
     </html>
