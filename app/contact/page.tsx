@@ -12,13 +12,41 @@ export default function ContactPage() {
     message: "",
   });
 
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<string | null>(null);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Add email sending logic here
+    setLoading(true);
+    setStatus(null);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setStatus("Your message has been sent successfully!");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setStatus("Failed to send your message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+      setStatus("An error occurred. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50  py-20">
+    <div className="min-h-screen bg-gray-50 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -27,7 +55,7 @@ export default function ContactPage() {
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
-          <p className="text-gray-600  max-w-2xl mx-auto">
+          <p className="text-gray-600 max-w-2xl mx-auto">
             Get in touch with us for any inquiries or support.
           </p>
         </motion.div>
@@ -38,7 +66,7 @@ export default function ContactPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="bg-white  rounded-lg p-8 shadow-lg">
+            <div className="bg-white rounded-lg p-8 shadow-lg">
               <h2 className="text-2xl font-semibold mb-6">Send us a message</h2>
               <form onSubmit={handleSubmit}>
                 <div className="space-y-6">
@@ -100,10 +128,26 @@ export default function ContactPage() {
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-primary text-white px-6 py-3 rounded-full hover:bg-primary/90 "
+                    disabled={loading}
+                    className={`w-full bg-primary text-white px-6 py-3 rounded-full ${
+                      loading
+                        ? "opacity-50 cursor-not-allowed"
+                        : "hover:bg-primary/90"
+                    }`}
                   >
-                    Send Message
+                    {loading ? "Sending..." : "Send Message"}
                   </button>
+                  {status && (
+                    <p
+                      className={`mt-4 text-center ${
+                        status.includes("successfully")
+                          ? "text-green-500"
+                          : "text-red-500"
+                      }`}
+                    >
+                      {status}
+                    </p>
+                  )}
                 </div>
               </form>
             </div>
@@ -114,7 +158,7 @@ export default function ContactPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="bg-white  rounded-lg p-8 shadow-lg">
+            <div className="bg-white rounded-lg p-8 shadow-lg">
               <h2 className="text-2xl font-semibold mb-6">
                 Contact Information
               </h2>
@@ -123,7 +167,7 @@ export default function ContactPage() {
                   <MapPin className="w-6 h-6 text-primary mt-1" />
                   <div>
                     <h3 className="font-medium">Address</h3>
-                    <p className="text-gray-600 ">
+                    <p className="text-gray-600">
                       No. 128, Mani Nagar 2nd Street, Sivanandhapuram,
                       Saravanampatti,
                     </p>
@@ -133,14 +177,16 @@ export default function ContactPage() {
                   <Phone className="w-6 h-6 text-primary mt-1" />
                   <div>
                     <h3 className="font-medium">Phone</h3>
-                    <p className="text-gray-600 ">+91 99445 34098</p>
+                    <p className="text-gray-600">+91 99445 34098</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <Mail className="w-6 h-6 text-primary mt-1" />
                   <div>
                     <h3 className="font-medium">Email</h3>
-                    <p className="text-gray-600 ">null</p>
+                    <p className="text-gray-600">
+                      noreply@srivisawacharitabletrust.com
+                    </p>
                   </div>
                 </div>
               </div>

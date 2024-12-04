@@ -125,20 +125,20 @@ export default function Navbar() {
             closed: { opacity: 0, height: 0 },
           }}
           transition={{ duration: 0.3 }}
-          className="md:hidden h-screen "
+          className="md:hidden h-screen overflow-hidden"
         >
-          <div className="pt-4 pb-3 h-screen text-white space-y-3">
+          <div className="pt-4 pb-3  text-white space-y-3">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="block   hover:text-primary  py-2"
+                className="block font-bold  hover:text-primary  py-2"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
-            <button className="w-full  bg-white text-primary px-6 py-2 rounded-full hover:bg-primary/90 ">
+            <button className="w-full font-bold bg-white text-primary px-6 py-2 rounded-full hover:bg-gray-500 ">
               Donate Now
             </button>
           </div>

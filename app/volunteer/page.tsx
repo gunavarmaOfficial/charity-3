@@ -1,20 +1,26 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import Image from "next/image";
+import toast from "react-hot-toast";
 
+// Define the schema using Zod
 const volunteerSchema = z.object({
   name: z.string().min(2, "Name is required"),
   email: z.string().email("Invalid email address"),
   phone: z.string().min(10, "Valid phone number is required"),
   interests: z.array(z.string()).min(1, "Select at least one interest"),
   availability: z.string().min(1, "Please select your availability"),
-  experience: z.string(),
+  experience: z.string().optional(), // Experience is optional
   message: z.string().min(10, "Please provide more details"),
 });
+
+// Infer the TypeScript type from the schema
+type VolunteerFormValues = z.infer<typeof volunteerSchema>;
 
 const interests = [
   "Education",
@@ -36,17 +42,39 @@ const availabilityOptions = [
 ];
 
 export default function VolunteerPage() {
+  const [isLoading, setIsLoading] = useState(false); // Loading state
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<VolunteerFormValues>({
     resolver: zodResolver(volunteerSchema),
   });
 
-  const onSubmit = async (data: any) => {
-    console.log(data);
-    // Add form submission logic here
+  const onSubmit = async (data: VolunteerFormValues) => {
+    setIsLoading(true); // Start loading
+    try {
+      const response = await fetch("/api/volunteer", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        toast.success(
+          "Application submitted successfully! We’ll be in touch soon."
+        );
+      } else {
+        toast.error(
+          "Failed to submit your application. Please try again later."
+        );
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("An error occurred while submitting your application.");
+    } finally {
+      setIsLoading(false); // End loading
+    }
   };
 
   return (
@@ -83,6 +111,7 @@ export default function VolunteerPage() {
               Volunteer Application Form
             </h2>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              {/* Full Name */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium mb-2">
@@ -93,13 +122,14 @@ export default function VolunteerPage() {
                     {...register("name")}
                     className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary"
                   />
-                  {/* {errors.name && (
+                  {errors.name && (
                     <p className="text-red-500 text-sm mt-1">
                       {errors.name.message}
                     </p>
-                  )} */}
+                  )}
                 </div>
 
+                {/* Email */}
                 <div>
                   <label className="block text-sm font-medium mb-2">
                     Email Address
@@ -109,14 +139,15 @@ export default function VolunteerPage() {
                     {...register("email")}
                     className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary"
                   />
-                  {/* {errors.email && (
+                  {errors.email && (
                     <p className="text-red-500 text-sm mt-1">
                       {errors.email.message}
                     </p>
-                  )} */}
+                  )}
                 </div>
               </div>
 
+              {/* Phone */}
               <div>
                 <label className="block text-sm font-medium mb-2">
                   Phone Number
@@ -126,13 +157,14 @@ export default function VolunteerPage() {
                   {...register("phone")}
                   className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary"
                 />
-                {/* {errors.phone && (
+                {errors.phone && (
                   <p className="text-red-500 text-sm mt-1">
                     {errors.phone.message}
                   </p>
-                )} */}
+                )}
               </div>
 
+              {/* Interests */}
               <div>
                 <label className="block text-sm font-medium mb-2">
                   Areas of Interest
@@ -153,13 +185,14 @@ export default function VolunteerPage() {
                     </label>
                   ))}
                 </div>
-                {/* {errors.interests && (
+                {errors.interests && (
                   <p className="text-red-500 text-sm mt-1">
                     {errors.interests.message}
                   </p>
-                )} */}
+                )}
               </div>
 
+              {/* Availability */}
               <div>
                 <label className="block text-sm font-medium mb-2">
                   Availability
@@ -175,13 +208,14 @@ export default function VolunteerPage() {
                     </option>
                   ))}
                 </select>
-                {/* {errors.availability && (
+                {errors.availability && (
                   <p className="text-red-500 text-sm mt-1">
                     {errors.availability.message}
                   </p>
-                )} */}
+                )}
               </div>
 
+              {/* Experience */}
               <div>
                 <label className="block text-sm font-medium mb-2">
                   Previous Volunteer Experience
@@ -194,6 +228,7 @@ export default function VolunteerPage() {
                 />
               </div>
 
+              {/* Message */}
               <div>
                 <label className="block text-sm font-medium mb-2">
                   Why do you want to volunteer?
@@ -204,19 +239,30 @@ export default function VolunteerPage() {
                   className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary"
                   placeholder="Tell us why you'd like to volunteer with us"
                 />
-                {/* {errors.message && (
+                {errors.message && (
                   <p className="text-red-500 text-sm mt-1">
                     {errors.message.message}
                   </p>
-                )} */}
+                )}
               </div>
 
-              <button
-                type="submit"
-                className="w-full bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 "
-              >
-                Submit Application
-              </button>
+              {/* Submit Button with Loading */}
+              <div className="relative">
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className={`w-full bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 ${
+                    isLoading ? "opacity-70 cursor-not-allowed" : ""
+                  }`}
+                >
+                  {isLoading ? "Submitting..." : "Submit Application"}
+                </button>
+                {isLoading && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-6 h-6 border-4 border-t-transparent border-white rounded-full animate-spin" />
+                  </div>
+                )}
+              </div>
             </form>
           </motion.div>
         </div>
