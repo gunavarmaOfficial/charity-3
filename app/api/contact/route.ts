@@ -61,34 +61,45 @@
 //   }
 // }
 
-// app/api/contact/route.ts
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-  console.log("Contact form request received");
+  const allowedOrigins = ["https://www.srivisawacharitabletrust.com"]; // Replace with your actual frontend URL
+
+  const origin = request.headers.get("Origin"); // This could be null
+
+  // If origin is null, fallback to an empty string or handle it as needed
+  if (!origin) {
+    return new Response("Origin header is missing", { status: 400 });
+  }
+
+  const response = NextResponse.json({
+    message: "Form submitted successfully",
+  });
+
+  // Check if the Origin is allowed
+  if (allowedOrigins.includes(origin)) {
+    response.headers.set("Access-Control-Allow-Origin", origin); // Allow the specific origin
+    response.headers.set("Access-Control-Allow-Methods", "POST"); // Allow only POST method
+    response.headers.set("Access-Control-Allow-Headers", "Content-Type"); // Allow Content-Type header
+    response.headers.set("Access-Control-Allow-Credentials", "true"); // Allow credentials if needed
+  }
+
+  // If it's a preflight request (OPTIONS), respond with 200
+  if (request.method === "OPTIONS") {
+    response.headers.set("Access-Control-Allow-Origin", origin);
+    response.headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+    response.headers.set("Access-Control-Allow-Headers", "Content-Type");
+    return new Response(null, { status: 200, headers: response.headers });
+  }
+
+  // Continue processing the POST request
   try {
     const body = await request.json();
-    console.log("Request body:", body);
-
-    const { name, email, message } = body;
-
-    if (!name || !email || !message) {
-      return NextResponse.json(
-        { error: "All fields are required." },
-        { status: 400 }
-      );
-    }
-
-    console.log("Contact Form Submitted:", { name, email, message });
-    return NextResponse.json(
-      { message: "Contact form submitted successfully!" },
-      { status: 200 }
-    );
+    // Process form data here
+    return response;
   } catch (error) {
-    console.error("Error handling contact form submission:", error);
-    return NextResponse.json(
-      { error: "An unexpected error occurred." },
-      { status: 500 }
-    );
+    console.error("Error in contact form submission:", error);
+    return NextResponse.json({ error: "An error occurred" }, { status: 500 });
   }
 }

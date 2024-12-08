@@ -1,15 +1,14 @@
 {
-    "builds": [
-      {
-        "src": "next.config.js",
-        "use": "@vercel/next"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/api/contact",
-        "dest": "/app/api/contact/route.ts"
-      }
-    ]
-  }
-  
+  "builds": [
+    {
+      "src": "next.config.js",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/contact",
+      "dest": "/app/api/contact/route.ts"
+    }
+  ]
+}

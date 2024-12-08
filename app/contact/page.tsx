@@ -221,11 +221,20 @@ export default function ContactForm() {
     setStatus(null);
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const res = await fetch(
+        "https://www.srivisawacharitabletrust.com/api/contact",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: "John",
+            email: "john@example.com",
+            message: "Hello!",
+          }),
+        }
+      );
 
       const data = await res.json();
       if (res.ok) {
