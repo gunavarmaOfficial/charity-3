@@ -1,16 +1,15 @@
 {
     "version": 2,
-    "builds": [
-      {
-        "src": "next.config.js",
-        "use": "@vercel/next"
-      }
-    ],
     "routes": [
       {
-        "src": "/api/.*",
-        "methods": ["POST"],
-        "dest": "/api"
+        "src": "/api/(.*)",
+        "methods": ["OPTIONS", "POST"],
+        "headers": {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type"
+        },
+        "dest": "/api/$1"
       }
     ]
   }
