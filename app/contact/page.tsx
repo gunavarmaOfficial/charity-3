@@ -24,12 +24,12 @@ export default function ContactPage() {
       const response = await fetch("api/contact", {
         method: "POST",
         headers: {
-          // "Content-Type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
 
-      const result = await response.json();
+      // const result = await response.json();
 
       if (response.ok) {
         setStatus("Your message has been sent successfully!");
