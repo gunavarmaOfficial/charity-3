@@ -1,12 +1,18 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(req: Request) {
+export function middleware(request: NextRequest) {
+  if (request.method === "OPTIONS") {
+    return new Response(null, {
+      headers: {
+        "Access-Control-Allow-Origin":
+          "https://www.srivisawacharitabletrust.com",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      },
+    });
+  }
+
   const response = NextResponse.next();
-
-  // Add custom headers for development or serverless deployments
   response.headers.set("Access-Control-Allow-Origin", "*");
-  response.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  response.headers.set("Access-Control-Allow-Headers", "Content-Type");
-
   return response;
 }
