@@ -4,20 +4,11 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Heart,
-  Users,
-  Globe,
-  Target,
-  CheckCircle2,
-} from "lucide-react";
+import { Heart, Users, Globe, Target, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ImagesSlider } from "@/components/ui/images-slider";
-import HeroVideoDialog from "@/components/ui/hero-video-dialog";
-import TextReveal, { TextRevealByWord } from "@/components/ui/text-reveal";
+import TextReveal from "@/components/ui/text-reveal";
 import AnimatedBackground from "@/components/ui/AnimatedBackground";
 
 gsap.registerPlugin(ScrollTrigger);
