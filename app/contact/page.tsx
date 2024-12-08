@@ -228,7 +228,6 @@ export default function ContactForm() {
       });
 
       const data = await res.json();
-
       if (res.ok) {
         setStatus("success");
         setFormData({ name: "", email: "", message: "" });

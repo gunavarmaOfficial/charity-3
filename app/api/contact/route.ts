@@ -65,10 +65,11 @@
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
+  console.log("Contact form request received");
   try {
     const body = await request.json();
+    console.log("Request body:", body);
 
-    // Destructure and validate the incoming data
     const { name, email, message } = body;
 
     if (!name || !email || !message) {
@@ -78,9 +79,7 @@ export async function POST(request: Request) {
       );
     }
 
-    // Mock processing (e.g., save to a database or send an email)
     console.log("Contact Form Submitted:", { name, email, message });
-
     return NextResponse.json(
       { message: "Contact form submitted successfully!" },
       { status: 200 }
