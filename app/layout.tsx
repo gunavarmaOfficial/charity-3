@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 import FloatingButtons from "@/components/FloatingButtons";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-
+import { Analytics } from "@vercel/analytics/react";
 const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -31,6 +31,7 @@ export default function RootLayout({
           <main className="">{children}</main>
           <Footer />
         </div>
+        <Analytics />
       </body>
     </html>
   );
