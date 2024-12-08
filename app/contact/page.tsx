@@ -224,7 +224,7 @@ export default function ContactForm() {
       const res = await fetch(
         "https://www.srivisawacharitabletrust.com/api/contact",
         {
-          method: "POST",
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
