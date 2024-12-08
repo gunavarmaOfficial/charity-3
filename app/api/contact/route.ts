@@ -72,20 +72,6 @@ export async function POST(req: Request) {
   //     { status: 500 }
   //   );
   // }
-
-  try {
-    const { name, email, subject, message } = await req.json();
-    console.log("Received data:", { name, email, subject, message });
-
-    // Log environment variables
-    console.log("Resend API Key:", process.env.RESEND_API_KEY);
-
-    // Remaining logic
-  } catch (error) {
-    console.error("Error in /api/contact:", error);
-    return NextResponse.json(
-      { success: false, message: "Server error occurred." },
-      { status: 500 }
-    );
-  }
+  const res = await req.json();
+  return Response.json({ res });
 }
