@@ -13,6 +13,9 @@ export function middleware(request: NextRequest) {
   }
 
   const response = NextResponse.next();
-  response.headers.set("Access-Control-Allow-Origin", "*");
+  response.headers.set(
+    "Access-Control-Allow-Origin",
+    "https://www.srivisawacharitabletrust.com"
+  );
   return response;
 }
