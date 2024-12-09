@@ -229,9 +229,15 @@ export default function ContactPage() {
 
     try {
       const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: "John Doe",
+          email: "johndoe@example.com",
+          message: "Hello, this is a test message!",
+        }),
       });
 
       if (response.ok) {

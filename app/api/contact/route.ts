@@ -63,19 +63,10 @@
 
 import { NextResponse } from "next/server";
 
-interface ContactFormData {
-  name: string;
-  email: string;
-  message: string;
-}
-
 export async function POST(req: Request) {
   try {
-    const body: ContactFormData = await req.json(); // Type the incoming body
-    const { name, email, message } = body;
-
-    // Simulate processing (e.g., saving to a database or sending an email)
-    console.log("Contact Form Submission:", { name, email, message });
+    const body = await req.json(); // Parse the incoming request body
+    console.log("Contact Form Submission:", body);
 
     return NextResponse.json(
       { message: "Thank you for your message!" },
@@ -83,9 +74,8 @@ export async function POST(req: Request) {
     );
   } catch (error) {
     console.error("Error handling contact form:", error);
-
     return NextResponse.json(
-      { error: "There was a problem processing your request." },
+      { error: "Something went wrong" },
       { status: 500 }
     );
   }
