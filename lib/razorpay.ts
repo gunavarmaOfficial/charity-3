@@ -14,7 +14,7 @@ export const initializeRazorpay = async (options: any) => {
     await loadRazorpayScript();
     return new Promise((resolve, reject) => {
       const razorpay = new (window as any).Razorpay({
-        key: "rzp_test_GEY7UzTcwKJWYy", // Replace with your test key
+        key: process.env.NEXT_PUBLIC_RAZORPAY_API_KEY,
         ...options,
         handler: function (response: any) {
           if (typeof options.handler === "function") {
