@@ -229,7 +229,7 @@ export default function ContactPage() {
 
     try {
       const response = await fetch("/api/contact", {
-        method: "GET",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
