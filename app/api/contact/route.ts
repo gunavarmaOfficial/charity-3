@@ -65,15 +65,21 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json(); // Parse the incoming request body
-    console.log("Contact Form Submission:", body);
+    const body = await req.json();
 
-    return NextResponse.json(
+    const response = NextResponse.json(
       { message: "Thank you for your message!" },
       { status: 200 }
     );
+
+    // Add CORS headers
+    response.headers.set("Access-Control-Allow-Origin", "*"); // Allow all origins or specify your domain
+    response.headers.set("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+    response.headers.set("Access-Control-Allow-Headers", "Content-Type");
+
+    return response;
   } catch (error) {
-    console.error("Error handling contact form:", error);
+    console.error("Error:", error);
     return NextResponse.json(
       { error: "Something went wrong" },
       { status: 500 }
