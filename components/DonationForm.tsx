@@ -56,12 +56,12 @@ export default function DonationForm() {
         },
       });
 
-      // Send initial email
-      await fetch("/api/donate", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" },
-      });
+      // // Send initial email
+      // await fetch("/api/donate", {
+      //   method: "POST",
+      //   body: JSON.stringify(data),
+      //   headers: { "Content-Type": "application/json" },
+      // });
 
       toast.success("Donation successful!");
     } catch (error) {
