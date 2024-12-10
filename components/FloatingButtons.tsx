@@ -14,7 +14,7 @@ export default function FloatingButtons() {
   };
 
   return (
-    <div className="fixed bottom-8 right-8 flex flex-col gap-4 z-50">
+    <div className="fixed bottom-24 right-7 flex flex-col gap-4 z-50">
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}

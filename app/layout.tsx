@@ -7,6 +7,7 @@ import { Toaster } from "react-hot-toast";
 import FloatingButtons from "@/components/FloatingButtons";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import TawkToChat from "@/lib/TawkToChat";
 const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -25,7 +26,7 @@ export default function RootLayout({
       <body className={outfit.className}>
         <Toaster />
         <SpeedInsights />
-        <FloatingButtons />
+        <TawkToChat />
         <div className="flex min-h-screen flex-col">
           <Navbar />
           <main className="">{children}</main>

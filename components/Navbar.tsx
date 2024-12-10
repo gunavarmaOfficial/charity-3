@@ -8,6 +8,8 @@ import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { MdOutlineClose } from "react-icons/md";
 import { RiMenu3Line } from "react-icons/ri";
+import { FaWhatsapp } from "react-icons/fa";
+import { Phone, MessageCircle } from "lucide-react";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -21,6 +23,14 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  const handleWhatsAppClick = () => {
+    window.open("https://wa.me/+919944534098", "_blank");
+  };
+
+  const handleCallClick = () => {
+    window.location.href = "tel:+91 99445 34098";
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -89,6 +99,21 @@ export default function Navbar() {
             >
               <Link href="/donate">Donate Now</Link>
             </button>
+            <div className="flex gap-4">
+              <button
+                onClick={() => handleWhatsAppClick()}
+                className=" font-bold bg-white text-primary p-2 rounded-full hover:bg-gray-200 "
+              >
+                <FaWhatsapp className="h-6 w-6" />
+              </button>
+
+              <button
+                onClick={() => handleCallClick()}
+                className=" font-bold bg-white text-primary p-2 rounded-full hover:bg-gray-200 "
+              >
+                <Phone className="h-6 w-6" />
+              </button>
+            </div>
           </div>
 
           {/* Mobile Navigation Toggle */}
@@ -132,7 +157,7 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="block font-bold  hover:text-primary  py-2"
+                className="block font-bold    py-2"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
@@ -141,6 +166,23 @@ export default function Navbar() {
             <button className="w-full font-bold bg-white text-primary px-6 py-2 rounded-full hover:bg-gray-500 ">
               Donate Now
             </button>
+            <div className="flex gap-4">
+              <button
+                onClick={() => handleWhatsAppClick()}
+                className=" font-bold bg-white text-primary flex p-2 items-center justify-center gap-3 rounded-full w-full hover:bg-gray-200 "
+              >
+                <FaWhatsapp className="h-6 w-6" />
+                <div>Chat With Us</div>
+              </button>
+
+              <button
+                onClick={() => handleCallClick()}
+                className=" font-bold bg-white text-primary flex p-2 items-center justify-center gap-3 rounded-full w-full hover:bg-gray-200 "
+              >
+                <Phone className="h-6 w-6" />
+                Call Us
+              </button>
+            </div>
           </div>
         </motion.div>
       </div>
