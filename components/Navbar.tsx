@@ -24,12 +24,40 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
+  const [settings, setSettings] = useState({
+    siteTitle: "Sri Viswa Charitable Trust",
+    whatsappNumber: "+919944534098",
+    phone: "+91 99445 34098",
+  });
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const res = await fetch("/api/admin/data");
+        if (res.ok) {
+          const result = await res.json();
+          if (result.settings) {
+            setSettings({
+              siteTitle: result.settings.siteTitle || "Sri Viswa Charitable Trust",
+              whatsappNumber: result.settings.whatsappNumber || "+919944534098",
+              phone: result.settings.phone || "+91 99445 34098",
+            });
+          }
+        }
+      } catch (err) {
+        console.error("Failed to load settings in Navbar", err);
+      }
+    };
+    fetchSettings();
+  }, []);
+
   const handleWhatsAppClick = () => {
-    window.open("https://wa.me/+919944534098", "_blank");
+    const cleanNum = settings.whatsappNumber.replace(/[^0-9]/g, "");
+    window.open(`https://wa.me/${cleanNum}`, "_blank");
   };
 
   const handleCallClick = () => {
-    window.location.href = "tel:+91 99445 34098";
+    window.location.href = `tel:${settings.phone}`;
   };
 
   useEffect(() => {
@@ -42,6 +70,8 @@ export default function Navbar() {
   }, []);
 
   console.log("pathname", pathname);
+
+  if (pathname && pathname.startsWith("/admin")) return null;
 
   return (
     <nav
@@ -67,7 +97,7 @@ export default function Navbar() {
                 : "text-primary"
             )}
           >
-            Sri Viswa Charitable Trust
+            {settings.siteTitle}
           </Link>
 
           {/* Desktop Navigation */}

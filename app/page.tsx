@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -41,7 +41,7 @@ const upcomingEvents = [
   },
 ];
 
-const images = [
+const defaultImages = [
   "https://s3.ap-south-1.amazonaws.com/rzp-prod-merchant-assets/payment-link/description/20190122164349_838A3181_D5P3M1bwCyu0x7.jpg",
   "https://donate.oxfamindia.org/donatetoeducate/ravi/davos-healthcare/images/how-donation.jpg",
   "https://www.globalgiving.org/pfil/1877/ph_1877_99953.jpg",
@@ -60,6 +60,25 @@ const achievements = [
 ];
 
 export default function Home() {
+  const [images, setImages] = useState<string[]>(defaultImages);
+
+  useEffect(() => {
+    const fetchBanners = async () => {
+      try {
+        const res = await fetch("/api/admin/data");
+        if (res.ok) {
+          const result = await res.json();
+          if (result.banners && result.banners.length > 0) {
+            setImages(result.banners);
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch dynamic banners", err);
+      }
+    };
+    fetchBanners();
+  }, []);
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(".impact-stat", {

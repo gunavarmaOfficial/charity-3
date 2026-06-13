@@ -8,6 +8,8 @@ import FloatingButtons from "@/components/FloatingButtons";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import TawkToChat from "@/lib/TawkToChat";
+import { ThemeProvider } from "@/components/ThemeProvider";
+
 const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -22,17 +24,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={outfit.className}>
-        <Toaster />
-        <SpeedInsights />
-        <TawkToChat />
-        <div className="flex min-h-screen flex-col">
-          <Navbar />
-          <main className="">{children}</main>
-          <Footer />
-        </div>
-        <Analytics />
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          <Toaster />
+          <SpeedInsights />
+          <TawkToChat />
+          <div className="flex min-h-screen flex-col">
+            <Navbar />
+            <main className="">{children}</main>
+            <Footer />
+          </div>
+          <Analytics />
+        </ThemeProvider>
       </body>
     </html>
   );

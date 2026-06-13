@@ -1,65 +1,71 @@
-"use server";
-
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY!);
+const resend = new Resend(process.env.RESEND_API_KEY || "dummy_key");
 
 export async function POST(req: Request) {
   try {
     const { name, email, amount, currency } = await req.json();
 
-    // Email to Admin
-    const adminEmailContent = {
-      from: "noreply@srivisawacharitabletrust.com",
-      to: "admin@srivisawacharitabletrust.com", // Admin email address
-      subject: "New Donation Received!",
-      html: `
-        <h1>New Donation Details</h1>
-        <p>A new donation has been received:</p>
-        <ul>
-          <li><strong>Name:</strong> ${name}</li>
-          <li><strong>Email:</strong> ${email}</li>
-          <li><strong>Amount:</strong> ${currency} ${amount}</li>
-        </ul>
-        <p>Best Regards,</p>
-        <p>Sri Viswa Charitable Trust</p>
-      `,
-    };
+    if (process.env.RESEND_API_KEY) {
+      try {
+        // Email to Admin
+        const adminEmailContent = {
+          from: "noreply@srivisawacharitabletrust.com",
+          to: "admin@srivisawacharitabletrust.com",
+          subject: "New Donation Received!",
+          html: `
+            <h1>New Donation Details</h1>
+            <p>A new donation has been received:</p>
+            <ul>
+              <li><strong>Name:</strong> ${name}</li>
+              <li><strong>Email:</strong> ${email}</li>
+              <li><strong>Amount:</strong> ${currency} ${amount}</li>
+            </ul>
+            <p>Best Regards,</p>
+            <p>Sri Viswa Charitable Trust</p>
+          `,
+        };
 
-    // Email to Donor
-    const donorEmailContent = {
-      from: "noreply@srivisawacharitabletrust.com",
-      to: email, // Donor's email address
-      subject: "Thank You for Your Donation!",
-      html: `
-        <h1>Thank You, ${name}!</h1>
-        <p>We sincerely appreciate your generous donation to Sri Viswa Charitable Trust.</p>
-        <p><strong>Donation Details:</strong></p>
-        <ul>
-          <li><strong>Amount:</strong> ${currency} ${amount}</li>
-          <li><strong>Donor Name:</strong> ${name}</li>
-        </ul>
-        <p>Your support helps us continue our mission.</p>
-        <p>Best Regards,</p>
-        <p>Sri Viswa Charitable Trust</p>
-      `,
-    };
+        // Email to Donor
+        const donorEmailContent = {
+          from: "noreply@srivisawacharitabletrust.com",
+          to: email,
+          subject: "Thank You for Your Donation!",
+          html: `
+            <h1>Thank You, ${name}!</h1>
+            <p>We sincerely appreciate your generous donation to Sri Viswa Charitable Trust.</p>
+            <p><strong>Donation Details:</strong></p>
+            <ul>
+              <li><strong>Amount:</strong> ${currency} ${amount}</li>
+              <li><strong>Donor Name:</strong> ${name}</li>
+            </ul>
+            <p>Your support helps us continue our mission.</p>
+            <p>Best Regards,</p>
+            <p>Sri Viswa Charitable Trust</p>
+          `,
+        };
 
-    // Send both emails
-    await Promise.all([
-      resend.emails.send(adminEmailContent), // Notify admin
-      resend.emails.send(donorEmailContent), // Thank donor
-    ]);
+        // Send both emails
+        await Promise.all([
+          resend.emails.send(adminEmailContent),
+          resend.emails.send(donorEmailContent),
+        ]);
+      } catch (emailError) {
+        console.error("Error sending donation emails via Resend:", emailError);
+      }
+    } else {
+      console.log(`Donation of ${currency} ${amount} pledged by ${name} (${email}). Resend key not set.`);
+    }
 
     return NextResponse.json({
       success: true,
-      message: "Emails sent successfully!",
+      message: "Donation processed successfully!",
     });
   } catch (error) {
-    console.error("Error sending email:", error);
+    console.error("Error handling donation submission:", error);
     return NextResponse.json(
-      { success: false, message: "Failed to send emails." },
+      { success: false, message: "Failed to process donation." },
       { status: 500 }
     );
   }
