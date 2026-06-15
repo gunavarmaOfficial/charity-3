@@ -24,40 +24,48 @@ export const ImagesSlider = ({
   const [loading, setLoading] = useState(false);
   const [loadedImages, setLoadedImages] = useState<string[]>([]);
 
-  const handleNext = () => {
+  const handleNext = React.useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex + 1 === images.length ? 0 : prevIndex + 1
     );
-  };
+  }, [images.length]);
 
-  const handlePrevious = () => {
+  const handlePrevious = React.useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex - 1 < 0 ? images.length - 1 : prevIndex - 1
     );
-  };
+  }, [images.length]);
 
   useEffect(() => {
-    loadImages();
-  }, []);
+    if (!images || images.length === 0) {
+      setLoadedImages([]);
+      setLoading(false);
+      return;
+    }
 
-  const loadImages = () => {
     setLoading(true);
     const loadPromises = images.map((image) => {
       return new Promise((resolve, reject) => {
         const img = new Image();
         img.src = image;
         img.onload = () => resolve(image);
-        img.onerror = reject;
+        img.onerror = (err) => {
+          console.error("Failed to load image:", image, err);
+          resolve(image); // resolve anyway to avoid breaking other images
+        };
       });
     });
 
     Promise.all(loadPromises)
-      .then((loadedImages) => {
-        setLoadedImages(loadedImages as string[]);
+      .then((loaded) => {
+        setLoadedImages(loaded as string[]);
         setLoading(false);
       })
       .catch((error) => console.error("Failed to load images", error));
-  };
+
+    setCurrentIndex(0);
+  }, [images]);
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowRight") {
@@ -71,7 +79,7 @@ export const ImagesSlider = ({
 
     // autoplay
     let interval: any;
-    if (autoplay) {
+    if (autoplay && images.length > 0) {
       interval = setInterval(() => {
         handleNext();
       }, 5000);
@@ -81,7 +89,7 @@ export const ImagesSlider = ({
       window.removeEventListener("keydown", handleKeyDown);
       clearInterval(interval);
     };
-  }, []);
+  }, [autoplay, handleNext, handlePrevious, images.length]);
 
   const slideVariants = {
     initial: {
@@ -119,17 +127,17 @@ export const ImagesSlider = ({
   return (
     <div
       className={cn(
-        "overflow-hidden h-full w-full relative flex items-center justify-center",
+        "overflow-hidden h-full w-full relative flex items-center justify-center bg-slate-950",
         className
       )}
       style={{
         perspective: "1000px",
       }}
     >
-      {areImagesLoaded && children}
-      {areImagesLoaded && overlay && (
+      {children}
+      {overlay && (
         <div
-          className={cn("absolute inset-0 bg-black/60 z-40", overlayClassName)}
+          className={cn("absolute inset-0 bg-black/60 z-30", overlayClassName)}
         />
       )}
 
@@ -142,7 +150,7 @@ export const ImagesSlider = ({
             animate="visible"
             exit={direction === "up" ? "upExit" : "downExit"}
             variants={slideVariants}
-            className="image h-full w-full absolute inset-0 object-cover object-center"
+            className="image h-full w-full absolute inset-0 object-cover object-center z-10"
           />
         </AnimatePresence>
       )}

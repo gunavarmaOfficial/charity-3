@@ -60,7 +60,7 @@ const achievements = [
 ];
 
 export default function Home() {
-  const [images, setImages] = useState<string[]>(defaultImages);
+  const [images, setImages] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchBanners = async () => {
