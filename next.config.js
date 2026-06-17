@@ -9,7 +9,8 @@ const nextConfig = {
       "s3.ap-south-1.amazonaws.com",
       "donate.oxfamindia.org",
       "www.globalgiving.org",
-      "media.istockphoto.com"
+      "media.istockphoto.com",
+      "startup-template-sage.vercel.app"
     ], // Whitelisted image domains
     formats: ["image/avif", "image/webp"], // Modern formats
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],

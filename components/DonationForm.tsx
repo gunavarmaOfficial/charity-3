@@ -11,6 +11,8 @@ import { Label } from "@/components/ui/label";
 import { initializeRazorpay } from "@/lib/razorpay";
 import toast from "react-hot-toast";
 import { CreditCard, Landmark, QrCode, Loader2 } from "lucide-react";
+import Image from "next/image";
+
 
 const formSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -334,7 +336,13 @@ export default function DonationForm() {
               <p className="text-left"><strong>UPI ID:</strong> {paymentConfig.upiId}</p>
               {paymentConfig.qrCodeUrl ? (
                 <div className="flex justify-center p-2 bg-white rounded-lg border max-w-[150px] mx-auto">
-                  <img src={paymentConfig.qrCodeUrl} alt="UPI QR Code" className="w-full object-contain" />
+                  <Image
+                    src={paymentConfig.qrCodeUrl}
+                    alt="UPI QR Code"
+                    width={150}
+                    height={150}
+                    className="w-full object-contain"
+                  />
                 </div>
               ) : (
                 <p className="text-[10px] text-gray-400 italic">No QR code graphic uploaded.</p>
