@@ -33,8 +33,8 @@ const AnimatedBackground = () => {
         <HeroVideoDialog
           className="md:h-[40%] md:w-[40%] px-10 z-50  "
           animationStyle="from-center"
-          videoSrc="https://www.youtube.com/watch?v=E4XKY-ISKdU"
-          thumbnailSrc="https://startup-template-sage.vercel.app/hero-light.png"
+          videoSrc="https://fvcxbtoiboxrlyncvjsr.supabase.co/storage/v1/object/public/video/VID_20241027_191333152.mp4"
+          thumbnailSrc="https://fvcxbtoiboxrlyncvjsr.supabase.co/storage/v1/object/public/video/VID_20241027_191333152.mp4"
           thumbnailAlt="Hero Video"
         />
       </div>
