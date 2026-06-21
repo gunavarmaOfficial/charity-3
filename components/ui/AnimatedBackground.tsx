@@ -34,7 +34,7 @@ const AnimatedBackground = () => {
           className="md:h-[40%] md:w-[40%] px-10 z-50  "
           animationStyle="from-center"
           videoSrc="https://fvcxbtoiboxrlyncvjsr.supabase.co/storage/v1/object/public/video/VID_20241027_191333152.mp4"
-          thumbnailSrc="https://fvcxbtoiboxrlyncvjsr.supabase.co/storage/v1/object/public/video/VID_20241027_191333152.mp4"
+          thumbnailSrc="https://fvcxbtoiboxrlyncvjsr.supabase.co/storage/v1/object/public/charity-assets/1781348536404_IMG_20241027_191717044.jpg"
           thumbnailAlt="Hero Video"
         />
       </div>
